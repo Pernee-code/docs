@@ -1,0 +1,40 @@
+node_modules/
+.next/
+.DS_Store
+
+# Local-only internal working docs — not for the shared repo
+Monika's files/
+
+# Turbo cache
+.turbo/
+
+# env files (opt-in for committing if needed)
+.env*
+# ...except the template. It holds placeholders only — never real values — and
+# the app's own error message tells you to copy it ("copy .env.example to
+# .env.local"), which is useless if it is not in the repo. The negation is
+# scoped to this ONE filename so .env.local and friends stay ignored.
+!.env.example
+
+# Jira credentials for the project-manager agent (projee) — never commit
+.jira-config.json
+
+# Per-developer Claude Code settings. Carries the secrets that .mcp.json
+# references by ${VAR} — .mcp.json is committed, so the key never is.
+.claude/settings.local.json
+
+# Test artifacts
+*.log
+
+# Figma section exports kept locally for reference — 5.5 MB of embedded
+# rasters that nothing at build time reads.
+apps/website/Website Sections/
+.vercel
+
+# TypeScript incremental build state and Next's generated env shim — both are
+# regenerated on every build and were committed by the Shadcn migration.
+*.tsbuildinfo
+next-env.d.ts
+
+# Product walkthrough output (see scripts/product-walkthrough)
+.walkthrough/

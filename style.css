@@ -1,0 +1,28 @@
+/*
+ * Custom CSS for the Pernee help centre. Mintlify picks up any .css file at
+ * the content root automatically and applies it site-wide.
+ *
+ * Keep this file for things docs.json genuinely cannot express. docs.json's
+ * `colors` object has exactly three knobs (primary / light / dark), so any
+ * surface that needs a specific design-system token rather than a tint
+ * derived from those three has to land here.
+ */
+
+/* Selected nav item — DS grey-100.
+ *
+ * Mintlify draws the selected item as `bg-primary/10`: the primary colour at
+ * 10% alpha. With primary now true black that composites to ~#E6E6E6 over
+ * white — grey-200's weight, a step darker than the DS selected state, and it
+ * shifts again if primary ever changes. Pinning the token makes the selected
+ * row the same grey-100 the product uses, independent of primary.
+ *
+ * Dark mode takes grey-100's dark-ramp value (#262626), the same role read
+ * bottom-up, rather than the `primary-light/10` tint it would otherwise get.
+ */
+#sidebar a[aria-current="page"] {
+  background-color: #f5f5f5;
+}
+
+:is(.dark, [data-theme="dark"]) #sidebar a[aria-current="page"] {
+  background-color: #262626;
+}

@@ -1,0 +1,93 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Pernee",
+  "description": "Help and documentation for CPA firms using Pernee.",
+  "colors": {
+    "primary": "#000000",
+    "light": "#F5F5F5",
+    "dark": "#262626"
+  },
+  "fonts": {
+    "family": "Instrument Sans",
+    "heading": {
+      "family": "Instrument Sans",
+      "weight": 500
+    },
+    "body": {
+      "family": "Instrument Sans",
+      "weight": 400
+    }
+  },
+  "favicon": "/images/favicon.svg",
+  "seo": {
+    "metatags": {
+      "og:image": "https://pernee.com/opengraph-image",
+      "og:image:type": "image/png",
+      "og:image:width": "1200",
+      "og:image:height": "630",
+      "og:image:alt": "Pernee",
+      "og:site_name": "Pernee",
+      "twitter:card": "summary_large_image",
+      "twitter:image": "https://pernee.com/twitter-image",
+      "twitter:image:alt": "Pernee"
+    }
+  },
+  "logo": {
+    "light": "/images/pernee-mark-light.svg",
+    "dark": "/images/pernee-mark-dark.svg",
+    "href": "https://pernee.com"
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Help centre",
+        "groups": [
+          {
+            "group": "Getting started",
+            "icon": "wand-magic-sparkles",
+            "pages": [
+              "index",
+              "getting-started/set-up-firm",
+              "getting-started/connect-systems",
+              "getting-started/team-access"
+            ]
+          },
+          {
+            "group": "Using Pernee",
+            "icon": "clipboard-list",
+            "pages": [
+              "clients",
+              "review",
+              "document-finder",
+              "agents",
+              "glossary"
+            ]
+          },
+          {
+            "group": "Reference",
+            "icon": "book",
+            "pages": [
+              "integrations",
+              "security",
+              "billing",
+              "settings"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "navbar": {
+    "primary": {
+      "type": "button",
+      "label": "Go to Pernee",
+      "href": "https://app.pernee.com"
+    }
+  },
+  "footer": {
+    "socials": {
+      "website": "https://pernee.com"
+    }
+  }
+}
