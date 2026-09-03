@@ -19,14 +19,18 @@ Two things have to agree, and they are the whole setup:
    `/help/:path*` → `${HELP_ORIGIN}/help/:path*`. See
    `apps/website/next.config.ts`.
 
-**The origin host is `pernee.mintlify.site`, and this is the part that bit us.**
-Mintlify serves a deployment from several hostnames and only `.mintlify.site`
-applies the "Host at" base path:
+**The origin host is `pernee.mintlifysite.com`, and this is the part that bit us —
+twice.** Mintlify serves a deployment from several hostnames and only
+`[subdomain].mintlifysite.com` applies the "Host at" base path. Until 2 Sep 2026
+the host was `pernee.mintlify.site`; Mintlify retired that domain without
+notice, it stopped resolving, and `/help` answered 502 until the proxy was
+repointed. If `/help` 502s again, check Mintlify's reverse-proxy guide for the
+current host before touching anything else:
 
 | Request | Result |
 |---|---|
-| `pernee.mintlify.site/help` | 200 — the docs, links prefixed `/help/*` |
-| `pernee.mintlify.site/clients` | 404 (correct — it is at `/help/clients`) |
+| `pernee.mintlifysite.com/help` | 200 — the docs, links prefixed `/help/*` |
+| `pernee.mintlifysite.com/clients` | 404 (correct — it is at `/help/clients`) |
 | `pernee.mintlify.app/` | the docs at the **root**, un-prefixed build |
 | `pernee.mintlify.app/help` | 404 |
 
