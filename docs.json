@@ -9,13 +9,13 @@
     "dark": "#262626"
   },
   "fonts": {
-    "family": "Instrument Sans",
+    "family": "Geist",
     "heading": {
-      "family": "Instrument Sans",
+      "family": "Geist",
       "weight": 500
     },
     "body": {
-      "family": "Instrument Sans",
+      "family": "Geist",
       "weight": 400
     }
   },
