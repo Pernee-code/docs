@@ -9,8 +9,8 @@ rebuilt — the origin at `https://pernee.mintlifysite.com/help` shows what was
 last built, and `pernee.com/help` proxies it.
 
 
-Mintlify content root. `docs.json` is the site config; Mintlify's dashboard
-must point its **content directory** at `docs` for any of it to build.
+Mintlify content root. `docs.json` is the site config, and the content
+directory in Mintlify's dashboard is empty: this repo's root is the site.
 
 ## How this reaches pernee.com/help
 
