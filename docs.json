@@ -1,6 +1,9 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
+  "icons": {
+    "library": "lucide"
+  },
   "name": "Pernee",
   "description": "Help and documentation for CPA firms using Pernee.",
   "colors": {
@@ -11,8 +14,8 @@
   "fonts": {
     "family": "Geist",
     "heading": {
-      "family": "Geist",
-      "weight": 500
+      "family": "Newsreader",
+      "weight": 400
     },
     "body": {
       "family": "Geist",
@@ -45,7 +48,7 @@
         "groups": [
           {
             "group": "Getting started",
-            "icon": "wand-magic-sparkles",
+            "icon": "wand-sparkles",
             "pages": [
               "index",
               "getting-started/set-up-firm",

@@ -29,9 +29,11 @@
 
 /* Type — the design system's faces, pernee-design 1.7.0 (2 Sep 2026).
  *
- * docs.json's `fonts` block carries the sans: Geist, headings at 500, body
- * at 400, loaded by Mintlify from Google Fonts by family name. That block
- * has no slot for a monospaced face, so the mono lands here. Geist Mono is
+ * docs.json's `fonts` block carries the two text faces: Newsreader for
+ * headings (at 400, never heavier — the marketing rule the website and the
+ * blog follow) and Geist for body, both loaded by Mintlify from Google Fonts
+ * by family name. That block has no slot for a monospaced face, so the mono
+ * lands here. Geist Mono is
  * what every code span, block and keyboard hint renders in across the
  * product, the website and the blog; without this rule the help centre
  * would be the one surface still showing the browser's default monospace.
