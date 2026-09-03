@@ -45,6 +45,30 @@
  * fonts.googleapis.com and fonts.gstatic.com for exactly this reason.
  */
 @import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap");
+
+/* Headings — Newsreader, the marketing serif.
+ *
+ * docs.json's `fonts.heading` names Newsreader, and the build ignores it:
+ * Mintlify loads only the top-level `family` from Google Fonts, and the
+ * heading setting left no trace in the built page (checked 3 Sep 2026).
+ * So the face is loaded and applied here. At 400 and never heavier — the
+ * rule the website and the blog follow for this face — with the optical
+ * size axis left to the browser, which is most of the point of a serif
+ * with one. `!important` because Mintlify sets heading weight and family
+ * through utility classes that otherwise win.
+ */
+#content-area h1,
+#content-area h2,
+#content-area h3,
+#content-area h4,
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Newsreader", Georgia, "Times New Roman", serif !important;
+  font-weight: 400 !important;
+}
 
 code,
 kbd,
