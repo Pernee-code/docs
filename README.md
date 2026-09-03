@@ -1,7 +1,16 @@
 # docs/
 
-Mintlify content root. `docs.json` is the site config; Mintlify's dashboard
-must point its **content directory** at `docs` for any of it to build.
+**This repo is the only source of the help centre (2 Sep 2026).** Mintlify's
+git source points here — `Pernee-code/docs`, deploy branch `main`, content
+directory empty. The copy that lived at `docs/` in the `pernee-ai` monorepo,
+which Mintlify built from until then, is removed (pernee-ai #282); do not
+recreate it. A change is live once it is on `main` here and Mintlify has
+rebuilt — the origin at `https://pernee.mintlifysite.com/help` shows what was
+last built, and `pernee.com/help` proxies it.
+
+
+Mintlify content root. `docs.json` is the site config, and the content
+directory in Mintlify's dashboard is empty: this repo's root is the site.
 
 ## How this reaches pernee.com/help
 
