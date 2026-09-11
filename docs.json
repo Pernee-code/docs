@@ -90,7 +90,11 @@
   },
   "footer": {
     "socials": {
-      "website": "https://pernee.com"
+      "website": "https://pernee.com",
+      "linkedin": "https://www.linkedin.com/company/pernee",
+      "facebook": "https://www.facebook.com/pernee.official",
+      "instagram": "https://www.instagram.com/pernee.ai",
+      "x": "https://x.com/PerneeAI"
     }
   }
 }
