@@ -1,0 +1,58 @@
+---
+title: "Export your client list from UltraTax CS"
+sidebarTitle: "UltraTax CS"
+description: "Run a Client Listing Report in UltraTax CS, export it to Excel with column headings, then bring it into Pernee."
+icon: "file-text"
+---
+
+UltraTax CS exports your book through its **Client Listing Reports**. You pick a report, choose which clients it covers, and export it to Excel.
+
+## Run and export the report
+
+<Steps>
+  <Step title="Open Client Listing Reports">
+    Choose **Utilities**, then **Client Listing Reports**.
+  </Step>
+  <Step title="Choose a report">
+    UltraTax CS offers ten. For bringing a book into Pernee, **General Client Information** is the right starting point; **Client Contact** is the one to use if you also want phone numbers and email addresses.
+
+    The full list: General Client Information, General Return Information, Client Contact, Client Communications, Status Summary, Client Totals, Client Family, Client Status History, User Activity, and Client ELF Summary.
+  </Step>
+  <Step title="Set the sort order">
+    Pick a sort criteria from the **Sort** field next to the report you selected. Any order works — Pernee does not care which.
+  </Step>
+  <Step title="Choose which clients to include">
+    Use the **Focus** group to narrow the list, then move the clients you want from **Clients available to print** into **Clients to print**.
+  </Step>
+  <Step title="Export">
+    Click **Export** to open the **Save As** dialog.
+  </Step>
+  <Step title="Pick Excel and tick the headings box">
+    Choose **Excel 97-2003 Workbook** as the file type. (**DIF** also works if you prefer it — Pernee reads both.)
+
+    Tick **Include column headings**. This matters more than it looks: without headers, Pernee has to infer what each column is from its contents, and headers make the difference between a clean import and a review table full of flags.
+  </Step>
+  <Step title="Save">
+    Name the file, choose a location, and click **Save**.
+  </Step>
+</Steps>
+
+<Note>
+  An `.XLS` file is fine — Pernee accepts it alongside `.xlsx` and `.csv`. There is no need to convert it first.
+</Note>
+
+## Then bring it into Pernee
+
+Drop the file into the card in Getting started, or open **Clients** and choose **Import clients**.
+
+Pernee proposes a legal name, entity type, return form and tax year for every row it found, and shows you all of them in an editable table. **Nothing is written to your book until you press Import.**
+
+<Tip>
+  Keep the UltraTax client ID in the export. Pernee stores it as an external reference, which is how it recognises the same client on a later import instead of creating a duplicate.
+</Tip>
+
+## If you need more than the standard reports
+
+UltraTax CS **Data Mining** can build a more specific list — clients on extension, say, or a single return type — and export that to file too. The resulting spreadsheet imports into Pernee exactly the same way.
+
+Using something else as well? See [Bring your book across](/import/overview).

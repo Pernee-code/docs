@@ -61,7 +61,9 @@
             "icon": "upload",
             "pages": [
               "import/overview",
-              "import/cch-axcess"
+              "import/cch-axcess",
+              "import/lacerte",
+              "import/ultratax-cs"
             ]
           },
           {
