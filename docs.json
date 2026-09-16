@@ -59,7 +59,10 @@
           {
             "group": "Import your book",
             "icon": "upload",
-            "pages": []
+            "pages": [
+              "import/overview",
+              "import/cch-axcess"
+            ]
           },
           {
             "group": "Using Pernee",

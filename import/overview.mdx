@@ -1,0 +1,88 @@
+---
+title: "Bring your book across"
+sidebarTitle: "Overview"
+description: "Export your client list from the software you already use, then drop the file into Pernee. Nothing is written to your book until you have reviewed every row."
+icon: "upload"
+---
+
+Pernee answers questions about your firm's own clients, so it needs your book before it can do anything useful. The fastest way to get it in is to export the client list you already keep in your tax or document software and drop the file into Pernee.
+
+**There is no template to fill in and no column-mapping step.** Any file with one row per client is enough. Pernee reads it, proposes the clients it found, and shows you every one of them in an editable table. Nothing is written to your book until you press **Import**.
+
+## Pick your software
+
+<CardGroup cols={2}>
+  <Card title="CCH Axcess" icon="table" href="/import/cch-axcess">
+    Export the grid from Client Manager or Return Manager as a CSV.
+  </Card>
+  <Card title="Lacerte" icon="file-spreadsheet" href="/import/lacerte">
+    Export to File from the Clients tab, comma delimited.
+  </Card>
+  <Card title="UltraTax CS" icon="file-text" href="/import/ultratax-cs">
+    Run a Client Listing Report and export it to Excel.
+  </Card>
+  <Card title="SmartVault" icon="folder" href="/import/smartvault">
+    Export to CSV from Client Management in the portal.
+  </Card>
+</CardGroup>
+
+Using something else? Any export with one row per client works the same way — so does a workbook a partner keeps by hand. Start from whatever you already have.
+
+## What Pernee reads
+
+Pernee proposes four things per client, and guesses nothing it cannot support:
+
+| Field | What it is |
+| --- | --- |
+| Legal name | The client's name as it is filed |
+| Entity type | Partnership, corporation, trust, individual and so on |
+| Return form | Derived from the entity type — see the table below |
+| Tax year | The year the return covers |
+
+Entity types and the forms they map to:
+
+| Entity type | Form |
+| --- | --- |
+| Partnership | 1065 |
+| Corporation | 1120 |
+| S-Corporation | 1120-S |
+| Foreign corporation | 1120-F |
+| Trust | 1041 |
+| Estate | 1041 |
+| Individual | 1040 |
+| Non-profit | 990 |
+| Private foundation | 990-PF |
+
+Columns Pernee cannot read are left alone rather than guessed at. Anything it was unsure about is flagged in the review table so you can correct it before importing.
+
+## File types and limits
+
+<Note>
+  Pernee accepts **up to 10 files** per import, each up to **20 MB**.
+</Note>
+
+| Kind | Extensions |
+| --- | --- |
+| Spreadsheets | `.csv`, `.xls`, `.xlsx`, `.xlsm`, `.xlsb`, `.ods` |
+| Documents | `.doc`, `.docx`, `.odt`, `.rtf` |
+| PDFs and scans | `.pdf`, `.png`, `.jpg`, `.jpeg` |
+
+A printed client list as a PDF is fine. So is a photograph of one. The review table is what catches anything read wrongly.
+
+## Then import it
+
+<Steps>
+  <Step title="Open the import">
+    Drop the file into the card in Getting started, or open **Clients** and choose **Import clients**.
+  </Step>
+  <Step title="Review every proposed client">
+    Each field is editable in place. Rows the extractor was unsure about are flagged rather than quietly defaulted — a wrong return form on a real client is invisible unless someone is shown it.
+  </Step>
+  <Step title="Press Import">
+    This is the first moment anything is written to your book.
+  </Step>
+</Steps>
+
+<Tip>
+  Only importing to try it out? Adding a single client by hand is faster, and you can import the rest later.
+</Tip>
