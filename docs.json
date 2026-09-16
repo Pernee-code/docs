@@ -57,6 +57,11 @@
             ]
           },
           {
+            "group": "Import your book",
+            "icon": "upload",
+            "pages": []
+          },
+          {
             "group": "Using Pernee",
             "icon": "clipboard-list",
             "pages": [
