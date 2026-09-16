@@ -60,6 +60,11 @@
             "group": "Import your book",
             "icon": "upload",
             "pages": [
+              "guides/overview",
+              "guides/cch-axcess",
+              "guides/lacerte",
+              "guides/ultratax-cs",
+              "guides/smartvault",
               "import/overview",
               "import/cch-axcess",
               "import/lacerte",

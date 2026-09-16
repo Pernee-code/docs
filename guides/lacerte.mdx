@@ -1,0 +1,68 @@
+---
+title: "Exporting your client list from Lacerte"
+sidebarTitle: "Lacerte"
+description: "Export to File from the Clients tab, comma delimited."
+icon: "file-spreadsheet"
+---
+
+Lacerte lets you pick exactly which fields come out. Takes a minute longer than the others and gives you a better file for it.
+
+## Steps
+
+<Steps>
+  <Step title="Pick your clients">
+    **Clients** tab. Highlight who you want.
+
+    Press <kbd>F3</kbd> for **Client Group Selection** if you're picking a lot of them.
+  </Step>
+  <Step title="Client menu, Export, Export to File">
+    All three, in that order.
+  </Step>
+  <Step title="Pick a folder">
+    **Browse** to somewhere you'll find it, or take the default:
+
+    ```text
+    C:\LACERTE\YYTAX\IDATA\EXPORT
+    ```
+
+    `YY` is the tax year — `24TAX` for 2024.
+  </Step>
+  <Step title="Name it">
+    Or leave it as `EXPORT`. Lacerte won't take `/ ? * : < > " |` in the name.
+  </Step>
+  <Step title="Set the export type to Comma Delimited">
+    That's the setting that gives you a CSV.
+  </Step>
+  <Step title="Choose your fields">
+    `(+)` expands a category in **Available**. Double-click an item, or highlight it and click `(>)`, to move it into **Display**. `(<)` takes it back out, **Up** and **Down** reorder.
+
+    Worth including: client name, entity or return type, tax year, client number, email.
+  </Step>
+  <Step title="OK, then Exit">
+    You'll find `EXPORT.CSV` in the folder you picked.
+  </Step>
+</Steps>
+
+<Warning>
+  Don't open it in Excel and save it again. Excel eats the leading zeros on ZIP codes and a re-saved file keeps the damage. Send Pernee the file Lacerte wrote.
+
+  If you do need to look at it, format the ZIP column as **Special** first.
+</Warning>
+
+## Or run a client listing report
+
+If you'd rather work from CLIST than the export dialog: run the report, choose **Print to file** in the **Report Display** options, and pick the comma delimited option for the file type.
+
+Lacerte offers to filter the client list before it runs, which is handy when you only want part of the book.
+
+## Then bring it in
+
+Drop the CSV into the card in Getting started, or open **Clients** and choose **Import clients**.
+
+Pernee reads the file, proposes a name, entity type, return form and tax year for each row, and shows you the lot on a review screen. Nothing saves to your book until you hit **Import**.
+
+<Tip>
+  Keep the Lacerte client number in the export. Pernee holds onto it, so a later import updates the client you already have instead of creating a second one.
+</Tip>
+
+Running something else too? See [Getting your client list into Pernee](/guides/overview).

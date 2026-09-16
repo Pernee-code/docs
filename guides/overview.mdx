@@ -1,0 +1,86 @@
+---
+title: "Getting your client list into Pernee"
+sidebarTitle: "Overview"
+description: "Export your client list from whatever you keep it in now, drop the file in, and check it before anything saves."
+icon: "upload"
+---
+
+Pernee works off your book. Export your client list from whatever you keep it in now, drop the file in, and check what came through before anything saves.
+
+There's no template to fill in and no column mapping. One row per client is enough.
+
+## Guides by software
+
+<CardGroup cols={2}>
+  <Card title="CCH Axcess" icon="table" href="/guides/cch-axcess">
+    Export the grid as a CSV.
+  </Card>
+  <Card title="Lacerte" icon="file-spreadsheet" href="/guides/lacerte">
+    Export to file, comma delimited.
+  </Card>
+  <Card title="UltraTax CS" icon="file-text" href="/guides/ultratax-cs">
+    Run a client listing report.
+  </Card>
+  <Card title="SmartVault" icon="folder" href="/guides/smartvault">
+    Export to CSV from the portal.
+  </Card>
+</CardGroup>
+
+Not on the list? Doesn't matter. Any file with one row per client works, including a spreadsheet somebody keeps by hand.
+
+## What Pernee pulls out
+
+Four things per client:
+
+| Field | What it is |
+| --- | --- |
+| Legal name | The name the return is filed under |
+| Entity type | Partnership, corporation, trust, individual and so on |
+| Return form | Comes from the entity type |
+| Tax year | The year the return covers |
+
+Entity types and the forms they map to:
+
+| Entity type | Form |
+| --- | --- |
+| Partnership | 1065 |
+| Corporation | 1120 |
+| S-Corporation | 1120-S |
+| Foreign corporation | 1120-F |
+| Trust | 1041 |
+| Estate | 1041 |
+| Individual | 1040 |
+| Non-profit | 990 |
+| Private foundation | 990-PF |
+
+If a column doesn't make sense to Pernee, it leaves it alone. It won't guess. Anything it wasn't sure about gets flagged so you can fix it before it saves.
+
+## What you can send
+
+Up to 10 files at a time, 20 MB each.
+
+| Kind | Extensions |
+| --- | --- |
+| Spreadsheets | `.csv`, `.xls`, `.xlsx`, `.xlsm`, `.xlsb`, `.ods` |
+| Documents | `.doc`, `.docx`, `.odt`, `.rtf` |
+| PDFs and scans | `.pdf`, `.png`, `.jpg`, `.jpeg` |
+
+A PDF of a printed client list works. So does a photo of one.
+
+## Importing it
+
+<Steps>
+  <Step title="Drop the file in">
+    Use the card in Getting started, or open **Clients** and choose **Import clients**.
+  </Step>
+  <Step title="Check what came through">
+    Every field is editable on the review screen. Rows Pernee wasn't sure about are flagged rather than filled in with a default, because a 1120 sitting where the sheet said 1120-S is the kind of thing nobody catches later.
+  </Step>
+  <Step title="Hit Import">
+    Nothing saves to your book until you do.
+  </Step>
+</Steps>
+
+<Tip>
+  Just trying it on one return? Adding a single client by hand is quicker. Import the rest whenever.
+</Tip>
