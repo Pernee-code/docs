@@ -57,6 +57,17 @@
             ]
           },
           {
+            "group": "Import your book",
+            "icon": "upload",
+            "pages": [
+              "guides/overview",
+              "guides/cch-axcess",
+              "guides/lacerte",
+              "guides/ultratax-cs",
+              "guides/smartvault"
+            ]
+          },
+          {
             "group": "Using Pernee",
             "icon": "clipboard-list",
             "pages": [
