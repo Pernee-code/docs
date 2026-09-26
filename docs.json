@@ -12,13 +12,13 @@
     "dark": "#262626"
   },
   "fonts": {
-    "family": "Geist",
+    "family": "Instrument Sans",
     "heading": {
-      "family": "Newsreader",
+      "family": "Hedvig Letters Serif",
       "weight": 400
     },
     "body": {
-      "family": "Geist",
+      "family": "Instrument Sans",
       "weight": 400
     }
   },

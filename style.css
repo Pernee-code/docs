@@ -27,13 +27,13 @@
   background-color: #262626;
 }
 
-/* Type — the design system's faces, pernee-design 1.7.0 (2 Sep 2026).
+/* Type — the design system's faces, pernee-design 1.12.0 (26 Sep 2026).
  *
- * docs.json's `fonts` block carries the two text faces: Newsreader for
- * headings (at 400, never heavier — the marketing rule the website and the
- * blog follow) and Geist for body, both loaded by Mintlify from Google Fonts
- * by family name. That block has no slot for a monospaced face, so the mono
- * lands here. Geist Mono is
+ * docs.json's `fonts` block carries the two text faces: Hedvig Letters Serif
+ * for headings (at 400, its only weight — the marketing rule the website and
+ * the blog follow) and Instrument Sans for body, both loaded by Mintlify from
+ * Google Fonts by family name. That block has no slot for a monospaced face,
+ * so the mono lands here. Geist Mono is
  * what every code span, block and keyboard hint renders in across the
  * product, the website and the blog; without this rule the help centre
  * would be the one surface still showing the browser's default monospace.
@@ -45,17 +45,19 @@
  * fonts.googleapis.com and fonts.gstatic.com for exactly this reason.
  */
 @import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&display=swap");
 
-/* Headings — Newsreader, the marketing serif.
+/* Headings — Hedvig Letters Serif, the marketing serif (it replaced
+ * Newsreader in pernee-design 1.12.0).
  *
- * docs.json's `fonts.heading` names Newsreader, and the build ignores it:
+ * docs.json's `fonts.heading` names Hedvig Letters Serif, and the build
+ * ignores it:
  * Mintlify loads only the top-level `family` from Google Fonts, and the
  * heading setting left no trace in the built page (checked 3 Sep 2026).
- * So the face is loaded and applied here. At 400 and never heavier — the
- * rule the website and the blog follow for this face — with the optical
- * size axis left to the browser, which is most of the point of a serif
- * with one. `!important` because Mintlify sets heading weight and family
+ * So the face is loaded and applied here. At 400, its only weight and the
+ * rule the website and the blog follow for this face, with the optical size
+ * axis left to the browser, which is most of the point of a serif with
+ * one. `!important` because Mintlify sets heading weight and family
  * through utility classes that otherwise win.
  */
 #content-area h1,
@@ -66,7 +68,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: "Newsreader", Georgia, "Times New Roman", serif !important;
+  font-family: "Hedvig Letters Serif", Georgia, "Times New Roman", serif !important;
   font-weight: 400 !important;
 }
 
