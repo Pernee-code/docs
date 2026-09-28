@@ -1,12 +1,57 @@
 ---
-title: "Account & settings"
-description: "Firm profile, staff invitations, notification preferences, and audit-log access."
-icon: "gear"
+title: "Firm settings & data administration"
+description: "Firm profile, user security, multi-factor authentication, team roles, audit logs, and data retention policies."
+icon: "settings"
 ---
 
-Firm profile, staff invitations, notification preferences, and audit-log access.
+The Settings area gives firm administrators centralized governance over team access, security controls, document integrations, and compliance policies.
 
-<Note>
-  This page is being written. If you need help with this now, contact your
-  Pernee representative.
-</Note>
+---
+
+## 1. Firm Profile & Organization
+
+- **Firm Details**: Configure your legal firm name, primary office address, and primary contact for billing and compliance notices.
+- **Tax Years & Deadlines**: Set firm-wide defaults for tax year targeting (e.g., active filing season vs. historical research) and internal target completion dates ahead of statutory deadlines.
+
+---
+
+## 2. Team Management & Access Control
+
+Pernee enforces granular role-based access control (RBAC):
+
+| Role | Permissions |
+| --- | --- |
+| **Partner / Admin** | Full firm governance: invite/remove users, connect firm integrations, manage billing, export or purge data, and authorize final client filings. |
+| **Reviewer / Manager** | Assign staff to client entities, review generated workpapers, clear diagnostic flags, and add review comments. |
+| **Preparer / Staff** | Ingest client source documents, run chat queries, prepare draft schedules, and verify citation links. |
+| **External Contractor** | Restricted strictly to designated client workspaces; cannot view firm-wide settings, billing, or unassigned client binders. |
+
+---
+
+## 3. Security, MFA & Step-Up Auth
+
+Pernee prioritizes account protection with database-level multi-factor authentication:
+
+- **Mandatory MFA**: Firm administrators can require all team members to enroll in two-factor authentication (TOTP via authenticator apps such as 1Password, Google Authenticator, or Microsoft Authenticator).
+- **Session Controls**: Set idle timeout windows (e.g., 30 minutes, 4 hours) to automatically lock sessions on unattended computers.
+- **Emergency Recovery Codes**: Users receive one-way hashed recovery codes upon MFA setup to regain account access without risking credential compromise.
+
+---
+
+## 4. Client Data Retention & Deletion (GDPR / CCPA)
+
+Under IRS rules and privacy laws (GDPR, CCPA, CPRA), accounting firms have specific obligations regarding client record retention:
+
+- **Client Disengagement Purge**: When an engagement terminates, firm administrators can select **Purge Client Workspace**. This immediately tombstones the client's vector embeddings, cached OCR documents, and extracted text.
+- **Full Firm Data Export**: Generate a cryptographically verified export of all workpapers, client trees, and audit histories in standard formats (`.xlsx`, `.pdf`, `.json`).
+- **Account Deletion**: Firm owners can request immediate account deletion and certified data destruction by contacting [privacy@pernee.com](mailto:privacy@pernee.com).
+
+---
+
+## 5. Audit Logging
+
+Every security-sensitive event is recorded in immutable database audit logs:
+- User sign-ins, sign-outs, and failed authentication attempts.
+- Team member role modifications and privilege escalations.
+- Document ingestion, export requests, and workspace purge events.
+- Client binder access logs showing which preparer or reviewer accessed specific files.

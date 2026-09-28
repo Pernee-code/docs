@@ -1,12 +1,58 @@
 ---
 title: "Billing & plans"
-description: "How the firm's plan is priced — platform fee plus per-client tier — and how to manage seats and spend caps."
+description: "How firm pricing works — platform fee plus filing tiers — managing seats, spend caps, cancellations, and data export policies."
 icon: "wallet"
 ---
 
-How the firm's plan is priced — platform fee plus per-client tier — and how to manage seats and spend caps.
+Pernee is structured to align with how CPA and accounting practices bill their clients: transparent platform licensing coupled with seasonal filing tiers.
+
+---
+
+## 1. Pricing Structure
+
+Pernee's subscription model consists of two components:
+
+1. **Firm Platform Fee**: Covers your firm's dedicated tenant isolation, SOC 2 compliant storage, continuous connector sync (Microsoft 365, SharePoint, Google Drive), and automated daily security canaries.
+2. **Active Filing Tiers**: Scaled to the volume of client entities and returns managed in your book for the active season (e.g., 1040, 1065, 1120, 1120-S, 990).
 
 <Note>
-  This page is being written. If you need help with this now, contact your
-  Pernee representative.
+**What Counts as an Active Filing?**  
+An active filing is a distinct return instance for a specific entity and tax year (for example, *Acme Corp — Form 1120 — TY2025*). Multiple state filings or extension schedules associated with that same return do not incur extra filing fees.
 </Note>
+
+---
+
+## 2. Managing Seats & Firm Members
+
+- **Team Roles**: Invite preparers, managers, reviewers, partners, and external seasonal contractors with role-specific access permissions.
+- **Seat Allocation**: Depending on your tier, seats can be added or reassigned at any time under **Settings → Team**.
+- **No Inactive Seat Waste**: Seasonal staff accounts can be suspended or removed after the April 15 or October 15 deadlines without losing audit logs or historical workpaper sign-offs.
+
+---
+
+## 3. Invoices, Payments & Stripe
+
+- All payment processing, invoicing, and receipt generation is powered by Stripe.
+- Invoices clearly itemize your firm's base platform subscription, current filing tier, and any sales tax applicable to your jurisdiction.
+- Payments can be made via credit card or ACH bank transfer for enterprise plans.
+- Download past receipts and manage billing contacts directly in **Settings → Billing**.
+
+---
+
+## 4. Cancellation & Refund Policy
+
+We want firms to have complete control and certainty over their commitments:
+
+- **Cancel Anytime**: Firm administrators can cancel a subscription at any time directly through **Settings → Billing**.
+- **Service Continuity**: Upon cancellation, your firm retains full access to Pernee until the conclusion of your current prepaid billing cycle (monthly or annual).
+- **Refund Terms**: Annual subscriptions cancelled within the first 14 days of activation are eligible for a prorated refund upon review by our billing team. Monthly subscriptions are non-refundable for the active month but will not renew.
+
+---
+
+## 5. Post-Cancellation Data Export & Purge
+
+Firms own 100% of their client documents, extracted figures, and workpapers. If your firm decides to end its subscription:
+
+1. **30-Day Export Window**: Following the conclusion of your paid subscription, your account enters a 30-day read-only export grace period. Firm administrators can download complete archive packages (ZIPs containing workpapers, audit trails, and reconciliation schedules).
+2. **Permanent Data Purge**: After the 30-day export window expires, Pernee triggers automated database tombstones and purges all firm vectors, extracted document chunks, and cached tokens from our servers.
+3. **Immediate Purge Requests**: Firms requiring immediate certified data destruction upon contract termination can request an expedited purge by emailing [privacy@pernee.com](mailto:privacy@pernee.com).

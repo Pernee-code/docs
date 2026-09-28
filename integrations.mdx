@@ -1,12 +1,73 @@
 ---
-title: "Integrations"
-description: "CCH Axcess, GoSystem Tax RS, Microsoft 365 (Outlook / Teams / SharePoint), ShareFile, Karbon, Slack. Read-only where possible; nothing writes back without a human."
-icon: "toolbox"
+title: "Integrations & bulk ingestion"
+description: "How Pernee connects to Microsoft 365 (SharePoint / OneDrive / Outlook) and Google Drive, read-only permissions, and bulk ingestion for 100k+ documents."
+icon: "blocks"
 ---
 
-CCH Axcess, GoSystem Tax RS, Microsoft 365 (Outlook / Teams / SharePoint), ShareFile, Karbon, Slack. Read-only where possible; nothing writes back without a human.
+Pernee connects to your firm's existing document storage and communication systems so you don't have to duplicate files or disrupt where staff store client deliverables.
 
-<Note>
-  This page is being written. If you need help with this now, contact your
-  Pernee representative.
-</Note>
+---
+
+## 1. Supported Connectors
+
+Pernee supports native cloud integrations with firm systems:
+
+| Provider | Supported Sources | Primary Use Case |
+| --- | --- | --- |
+| **Microsoft 365** | SharePoint Document Libraries, OneDrive for Business | Ingesting prior-year tax binders, workpapers, PBC request folders, and trial balances. |
+| **Microsoft Outlook & Teams** | Outlook Mail, Exchange, Teams Channels | Indexing client email threads, tax elections, and team discussions regarding filing notes. |
+| **Google Workspace** | Google Drive | Indexing shared client folders, spreadsheets, and scanned source documents. |
+| **Gmail** | Google Workspace Mail | Indexing client correspondence and engagement letters. |
+
+---
+
+## 2. Read-Only Permission Posture
+
+Pernee operates on a **strict read-only posture** for all primary document repositories:
+
+- **No Overwriting or Deletion**: Pernee never modifies, renames, moves, or deletes your firm's source files in SharePoint, OneDrive, or Google Drive.
+- **Minimal OAuth Scopes**: Integrations request read scopes (e.g., `Files.Read.All`, `Mail.Read`).
+- **Encrypted Token Management**: OAuth refresh and access tokens are encrypted at the application layer with AES-256-GCM before storage. Tokens are refreshed automatically without requiring re-authentication.
+
+---
+
+## 3. Bulk Ingestion Engine (100k+ Documents)
+
+Top accounting practices frequently connect central SharePoint libraries housing 50,000 to 200,000+ client tax files. Ingesting a corpus of this scale requires dedicated infrastructure that avoids serverless timeouts and rate-limit throttling.
+
+### Asynchronous Worker Architecture
+Pernee splits bulk ingestion into a two-phase asynchronous pipeline:
+
+```
+┌────────────────────────┐      ┌────────────────────────┐      ┌────────────────────────┐
+│   Phase 1: Discovery   │ ───► │  Phase 2: Hydration    │ ───► │    Client Binder       │
+│ Crawls folder tree &   │      │ Extracts text, chunks, │      │ Indexed, embedded &    │
+│ catalogs document IDs  │      │ & computes embeddings  │      │ ready for instant chat │
+└────────────────────────┘      └────────────────────────┘      └────────────────────────┘
+```
+
+1. **Discovery (Metadata Pass)**: The connector traverses folder trees, catalogs document metadata (filenames, paths, modified timestamps, sizes), and maps them into staging tables without downloading full payloads.
+2. **Chunked Hydration Workers**: Documents are fanned out across asynchronous background workers (powered by Inngest). Each worker downloads, parses, and vectors files in discrete 100-document batches.
+3. **Throttling & Backoff**: Integrations detect API rate limits (HTTP 429 `Retry-After`) and automatically back off with jitter to protect firm API quotas.
+4. **Resumable Sync**: Every processed file records its sync state. If a network interruption occurs, the sync resumes exactly where it left off without re-processing completed files.
+
+### Enterprise CLI Backfills
+For ultra-large migrations or historical backfills across hundreds of clients, Pernee provides a dedicated command-line backfill worker (`npm run bulk:backfill`). Firm IT administrators can execute backfills directly within their private network, slicing by provider and client ID.
+
+---
+
+## 4. Document Processing & OCR
+
+Once a document is discovered, Pernee's ingestion pipeline prepares it for tax research and review:
+
+- **Multi-Format Extraction**: Parses multi-tab Excel workbooks (`.xlsx`), native PDFs, scanned image PDFs, Word documents (`.docx`), and `.eml` email files.
+- **OCR for Scanned Tax Slips**: Scanned W-2s, 1099s, K-1s, and brokerage statements undergo high-accuracy optical character recognition.
+- **Client & Entity Tagging**: Extracted chunks are tagged with entity identifiers (EIN, SSN, Tax Year, Filing Type) and isolated by client Row-Level Security.
+
+---
+
+## 5. Disconnecting an Integration
+
+Firm administrators can revoke access to any connector at any time in **Settings → Integrations**:
+- Revoking a connector immediately stops all active sync jobs and deletes the stored OAuth credentials.
+- Document chunks previously indexed remain in your firm's private database until purged or tombstoned by your firm administrator.

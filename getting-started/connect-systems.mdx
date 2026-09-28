@@ -1,12 +1,38 @@
 ---
 title: "Connect your systems"
-description: "Link CCH Axcess or GoSystem, Microsoft 365 (Outlook / Teams / SharePoint), and ShareFile so Pernee can read your existing workflow."
+description: "Link Microsoft 365 (SharePoint / OneDrive / Outlook) and Google Drive so Pernee can index client binders."
 icon: "plug"
 ---
 
-Link CCH Axcess or GoSystem, Microsoft 365 (Outlook / Teams / SharePoint), and ShareFile so Pernee can read your existing workflow.
+Pernee connects directly to where your firm already stores tax documents. You do not need to upload files manually one by one.
 
-<Note>
-  This page is being written. If you need help with this now, contact your
-  Pernee representative.
-</Note>
+---
+
+## 1. Connecting Microsoft 365 / SharePoint
+
+If your firm uses Microsoft 365 for document management and email:
+
+1. Navigate to **Settings → Integrations**.
+2. Under **Microsoft 365**, click **Connect**.
+3. A Microsoft OAuth dialog will prompt your Microsoft 365 Global Administrator or designated user to authenticate.
+4. Select the specific SharePoint Document Libraries or OneDrive folders housing your client folders.
+5. Grant read-only permissions (`Files.Read.All`). Pernee never requests permissions to delete or overwrite your firm's source files.
+
+---
+
+## 2. Connecting Google Workspace / Google Drive
+
+If your firm uses Google Drive:
+
+1. In **Settings → Integrations**, find **Google Drive** and click **Connect**.
+2. Sign in with your firm's Google Workspace administrator account.
+3. Select the Shared Drives containing client tax packages and trial balance sheets.
+
+---
+
+## 3. Initial Sync & Ingestion
+
+Once authorized, Pernee initiates an asynchronous discovery pass:
+- Document metadata is cataloged first so client records populate immediately.
+- Background workers begin chunking and generating embeddings for PDFs, spreadsheets, and tax slips.
+- For libraries exceeding 50,000 documents, ingestion operates asynchronously in the background without locking your interface. Read more in our [Integrations & Bulk Ingestion guide](/integrations).

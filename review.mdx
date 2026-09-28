@@ -1,12 +1,81 @@
 ---
-title: "Review workspace"
-description: "Preparer checkpoints, side-by-side prior-year review comments on the same line, and carrying open items forward year over year."
+title: "Review workspace & sign-off"
+description: "Preparer checkpoints, source citation traceability, IRS Circular 230 standards, and the human-in-the-loop review workflow."
 icon: "clipboard-list"
 ---
 
-Preparer checkpoints, side-by-side prior-year review comments on the same line, and carrying open items forward year over year.
+The Review Workspace is where tax findings, reconciliation schedules, and generated workpapers transition into client-ready deliverables. 
 
-<Note>
-  This page is being written. If you need help with this now, contact your
-  Pernee representative.
-</Note>
+It is engineered around a core principle of accounting practice: **AI can prepare and cross-reference, but a licensed professional must verify and sign off.**
+
+---
+
+## 1. Human-in-the-Loop & IRS Circular 230 Compliance
+
+Pernee is an assistive productivity platform, not a licensed accounting or law firm. It does not provide formal legal, tax, or accounting advice.
+
+<Warning>
+**Professional Due Diligence Notice**  
+Under Treasury Department Circular 230 (31 C.F.R. Part 10, §§ 10.33, 10.34, and 10.37) and AICPA Statements on Standards for Tax Services (SSTS), practitioners must exercise due diligence in preparing returns and advising clients. All AI-generated workpapers, tax position memos, and calculations require independent review and verification by a licensed CPA, Enrolled Agent, or qualified professional prior to delivery or e-filing.
+</Warning>
+
+Pernee's review workspace enforces this standard by design:
+- **No Direct Filing**: Pernee cannot transmit returns directly to the IRS or state tax authorities.
+- **Preparer Checkpoints**: Every AI-generated schedule requires explicit human sign-off before being promoted to the permanent client binder.
+- **Audit Trails**: Every review sign-off, comment, and override is stamped with the practitioner's identity, role, and timestamp.
+
+---
+
+## 2. Citation Traceability & Source Grounding
+
+One of the greatest risks in tax preparation is an ungrounded or hallucinated figure. In Pernee, **every extracted number and claim links directly to its source document**.
+
+- **Click-to-Source Verification**: Hovering over or clicking a citation badge opens the underlying document in the side-by-side Canvas viewer.
+- **Bbox & Page Highlighting**: For PDF workpapers, scanned 1099s, and K-1s, the exact box, line item, or paragraph is highlighted in yellow.
+- **Spreadsheet Cell Links**: For Excel files, citations reference the specific worksheet tab and cell coordinates (e.g., `TrialBalance.xlsx -> 'Sch M-1'!D42`).
+
+---
+
+## 3. The 3-Tier Review Workflow
+
+Pernee structures client engagements across three distinct tiers of responsibility:
+
+```
+┌─────────────────────────┐
+│     1. Preparer         │ ───► Runs initial scans, organizes documents, checks PBC
+│                         │      items, and generates draft reconciliation schedules.
+└─────────────────────────┘
+            │
+            ▼
+┌─────────────────────────┐
+│     2. Reviewer         │ ───► Clears diagnostics, reviews prior-year tickmarks,
+│                         │      verifies tax positions, and marks open review notes.
+└─────────────────────────┘
+            │
+            ▼
+┌─────────────────────────┐
+│     3. Partner Sign-off │ ───► Final risk review, engagement quality review (EQR),
+│                         │      and client delivery authorization.
+└─────────────────────────┘
+```
+
+### Review Status Flags
+Every filing moves through standardized stages:
+1. **Not started**
+2. **Waiting on client**
+3. **In prep**
+4. **Pre-review ready**
+5. **In review**
+6. **Review flagged** (open review comments need resolution)
+7. **Filed**
+8. **Delivered**
+
+---
+
+## 4. Prior-Year Comments & Roll-Forward
+
+Tax review notes often repeat year after year. Pernee preserves and surfaces prior-year comments directly alongside current-year figures:
+
+- **Same-Line Comparison**: Prior-year review comments appear in a side-by-side drawer next to current-year workpapers.
+- **Carried-Forward Open Items**: If an item required an election statement or custom depreciation treatment last season, Pernee flags it during prep before the return goes to senior review.
+- **Tickmark Clearing**: Reviewers can mark items with standard audit tickmarks (`Agreed to GL`, `Footed & Verified`, `Traced to Source`) or raise queries back to the preparer with one click.

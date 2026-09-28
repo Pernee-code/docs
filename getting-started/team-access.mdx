@@ -1,12 +1,32 @@
 ---
-title: "Team & access"
-description: "Invite teammates, choose roles, and control which staff can see which clients."
+title: "Team access & roles"
+description: "Inviting partners, managers, preparers, and seasonal contractors with role-specific access permissions."
 icon: "users"
 ---
 
-Invite teammates, choose roles, and control which staff can see which clients.
+Pernee allows firms to assemble tax engagement teams while maintaining strict client boundaries and audit controls.
 
-<Note>
-  This page is being written. If you need help with this now, contact your
-  Pernee representative.
-</Note>
+---
+
+## 1. Inviting Team Members
+
+1. Navigate to **Settings → Team**.
+2. Click **Invite Member**.
+3. Enter your team member's corporate email address and assign an initial role:
+   - **Partner**: Full administrative control, billing oversight, and final return sign-off authority.
+   - **Manager / Reviewer**: Ability to review workpapers, clear preparer tickmarks, and leave review comments.
+   - **Preparer**: Ability to ingest client documents, run AI research chats, and generate draft schedules.
+   - **Contractor**: Scoped exclusively to assigned client entities without firm-wide visibility.
+
+---
+
+## 2. Shared Join Links vs. Direct Email Invites
+
+- **Direct Email**: Sends a time-limited, cryptographically signed invitation link directly to the recipient's inbox.
+- **Join Links**: Firm administrators can generate role-specific join links for rapid seasonal onboarding. Join links are hashed with SHA-256 and can be deactivated at any time with a single click.
+
+---
+
+## 3. Enforcing Multi-Factor Authentication (MFA)
+
+To safeguard confidential client tax information, we recommend enabling **Enforce MFA for All Teammates** under **Settings → Security**. Teammates will be required to configure TOTP-based two-factor authentication upon their next sign-in.

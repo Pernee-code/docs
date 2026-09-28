@@ -1,12 +1,76 @@
 ---
 title: "Security & privacy"
-description: "Client-confidentiality guarantees, data scoping, SSO, retention windows, and how source documents stay in your systems."
+description: "Zero Data Retention (ZDR), Row-Level Security, AES-256-GCM credential encryption, MFA enforcement, and how client data stays isolated."
 icon: "shield-check"
 ---
 
-Client-confidentiality guarantees, data scoping, SSO, retention windows, and how source documents stay in your systems.
+Pernee is built for professional accounting and tax practices where client confidentiality, IRS regulations, and data integrity are non-negotiable.
 
-<Note>
-  This page is being written. If you need help with this now, contact your
-  Pernee representative.
-</Note>
+This document outlines our security architecture, data handling practices, and cryptographic protections.
+
+---
+
+## 1. Zero Data Retention (ZDR) for AI Models
+
+The central security question for accounting firms using AI is: *Does an external model provider retain or train on our client data?*
+
+**No. Pernee enforces Zero Data Retention by default across all AI workflows.**
+
+- **Gateway-Enforced ZDR**: All requests to foundation models (such as Anthropic Claude and OpenAI) pass through an enterprise AI Gateway with contractual Zero Data Retention agreements.
+- **Fail-Closed Guarantee**: If a provider does not support ZDR or an agreement is unavailable, the gateway refuses to route the request.
+- **Never Used for Training**: Neither Pernee nor any underlying model provider ever uses your firm's prompts, uploaded tax returns, workpapers, client financials, or emails to train public or foundation models.
+- **Ephemeral Processing**: Model providers process the tokens in memory to generate responses and immediately discard the context.
+
+---
+
+## 2. Multi-Tenant Isolation & Row-Level Security (RLS)
+
+Pernee stores firm and client data in dedicated PostgreSQL schemas backed by Supabase. Tenant isolation is not an application-layer check; it is enforced directly inside the database engine.
+
+- **RLS on Every Table**: Row-Level Security is active on 100% of database tables (92 of 92). Every `SELECT`, `INSERT`, `UPDATE`, and `DELETE` query is filtered by the requesting user's organization and client permissions.
+- **Client Boundary Protection**: Document access is restricted to team members assigned to the specific client entity. A user belonging to Firm A cannot inspect, query, or infer data belonging to Firm B.
+- **Daily Automated Canaries**: A production tenant-isolation canary runs every morning at 07:00 UTC, attempting unauthorized cross-tenant queries. Any regression triggers an immediate critical alert.
+- **Automated RLS Probes**: Every schema migration must pass automated policy probes in CI (`npm run test:rls`) before being deployed to staging or production.
+
+---
+
+## 3. Encryption at Rest & in Transit
+
+### Application-Layer Credential Encryption
+Sensitive integration credentials (such as Microsoft Graph and Google Drive OAuth access and refresh tokens, as well as workspace join tokens) are encrypted at the application layer before touching disk:
+- **Algorithm**: AES-256-GCM with a fresh random 12-byte initialization vector (IV) per entry.
+- **Integrity Verification**: Authentication tags are validated on every decryption to detect any tampering or bit rot.
+- **Ciphertext Format**: Structured as `v1:<iv>:<tag>:<data>`.
+- **Zero-Downtime Key Rotation**: Rotation is supported via dual-key decryption mechanisms (`CONNECTOR_TOKEN_ENCRYPTION_KEY_PREVIOUS`), allowing seamless re-encryption without service interruptions.
+
+### Storage & Database Encryption
+- **Database Volumes**: Full disk encryption at rest using AES-256 managed by Supabase.
+- **Object Storage**: All document storage buckets (`knowledge-pdfs`, `knowledge-library`, `space-files`) are completely private (`public = false`) and protected by storage-layer RLS policies.
+- **In-Transit Protection**: All network traffic is encrypted via TLS 1.3. Web traffic enforces HTTP Strict Transport Security (HSTS) with `max-age=63072000; includeSubDomains; preload`.
+
+---
+
+## 4. Database-Level Multi-Factor Authentication (MFA)
+
+Security controls that rely solely on middleware can be bypassed by broken routes. Pernee enforces step-up authentication directly in the database:
+- **`mfa_satisfied()` Gating**: RLS policies require a verified multi-factor session (`aal2`) to read sensitive client tables. If a user authenticates with password-only (`aal1`), the database returns zero rows.
+- **Zero Plaintext Secrets**: Passwords are one-way hashed with bcrypt. TOTP secrets are held exclusively in hardened auth vaults and are not stored in application tables. MFA recovery codes are hashed with salted SHA-256.
+
+---
+
+## 5. Privacy & Observability Safeguards
+
+We design our telemetry and monitoring to prevent sensitive client tax documents, Social Security Numbers (SSNs), and Employer Identification Numbers (EINs) from leaking into logs:
+
+- **Masked Session Replay**: Sentry error tracking and session replay explicitly enable `maskAllText: true`, `maskAllInputs: true`, and `blockAllMedia: true`. All input fields and client text appear as redacted bars in diagnostics.
+- **No Email in Observability**: Error trackers identify sessions solely by internal opaque UUIDs, never by user email address or client names.
+- **Stripped HTTP Payloads**: Server-side request bodies containing tax documents or embeddings are stripped before error transmission.
+
+---
+
+## 6. Security Questionnaire & SOC 2 Inquiries
+
+If your firm requires a custom Security Questionnaire, Data Processing Addendum (DPA), or SOC 2 Type II report for vendor onboarding:
+
+- Reach out to our security team at [security@pernee.com](mailto:security@pernee.com).
+- View our public privacy policy at [pernee.com/privacy-policy](https://pernee.com/privacy-policy) and terms at [pernee.com/terms](https://pernee.com/terms).
