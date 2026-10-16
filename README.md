@@ -1,4 +1,4 @@
-# docs/
+# Pernee help centre (`Pernee-code/docs`)
 
 **This repo is the only source of the help centre (2 Sep 2026).** Mintlify's
 git source points here — `Pernee-code/docs`, deploy branch `main`, content
@@ -14,8 +14,9 @@ directory in Mintlify's dashboard is empty: this repo's root is the site.
 
 ## How this reaches pernee.com/help
 
-Mintlify hosts the site and `apps/website` reverse-proxies `/help` to it, the
-same way it proxies `/blog`, so the URL bar stays on `pernee.com`. Mintlify is
+Mintlify hosts the site and the marketing site
+([`Pernee-code/website`](https://github.com/Pernee-code/website)) reverse-proxies
+`/help` to it, the same way it proxies `/blog`, so the URL bar stays on `pernee.com`. Mintlify is
 not deployed by Vercel and has no Vercel project.
 
 Two things have to agree, and they are the whole setup:
@@ -25,8 +26,8 @@ Two things have to agree, and they are the whole setup:
    the docs with `basePath: "/help"`, so every link and asset URL it generates
    already carries the prefix.
 2. **The proxy forwards that prefix rather than stripping it** —
-   `/help/:path*` → `${HELP_ORIGIN}/help/:path*`. See
-   `apps/website/next.config.ts`.
+   `/help/:path*` → `${HELP_ORIGIN}/help/:path*`. See `next.config.ts`
+   in the website repo.
 
 **The origin host is `pernee.mintlifysite.com`, and this is the part that bit us —
 twice.** Mintlify serves a deployment from several hostnames and only
@@ -55,27 +56,28 @@ Only what is listed in `docs.json`'s navigation. Mintlify does not publish a
 file merely for sitting in this directory — but it does parse every `.md` and
 `.mdx` under the content root, so an unlisted file can still break the build.
 
-## What is deliberately not published
+## Internal material does not belong here
 
-These files live here because this is where the repo keeps them, **not**
-because they belong on a docs site. They are internal and are kept out of
-`docs.json`:
+Internal briefs (agent role briefs, internal plans) used to sit beside the docs
+in the old monorepo and were kept out of `docs.json`. They are not in this
+repo, and should not be added to it. Before adding a page, ask whether it is
+written for someone outside the company. If it is addressed to an agent or a
+teammate, it belongs in a private repo, not here.
 
-- `agents/veepee.md`, `agents/princee.md`, `agents/pernesh.md` — the canonical
-  briefs for the engineering roles. They name the Jira instance and board, the
-  compliance posture, internal file layouts, and which class of defect is
-  treated as most severe. That last one is a map for anyone looking for a way
-  in.
-- `tech-knowledge-base-plan.md` — an internal proposal, including an inventory
-  of internal systems and their status.
+## Analytics
 
-Before adding a page to the navigation, ask whether it is written for someone
-outside the company. If it is addressed to an agent or a teammate, it is not
-documentation — it is an internal brief that happens to be Markdown.
+`docs.json` → `integrations.ga4` sends page views to the same **GA4** property
+as pernee.com and the blog: `549432653` (`G-1CVP1TB4JM`). Mintlify does not
+send from preview links.
+
+Unlike the website and the blog, Mintlify's integration has no internal-traffic
+guard. The team's own visits to `/help`, and any direct visits to the
+`mintlifysite.com` origin, are counted. In GA4, filter on hostname
+`pernee.com` to see real `/help` traffic.
 
 ## Note on repository visibility
 
-`Pernee-code/pernee-ai` is a **public** repository, so everything above is
-already world-readable on GitHub regardless of what Mintlify serves. Keeping a
-file out of the navigation limits how it is presented and indexed; it does not
-make it private.
+**This repository (`Pernee-code/docs`) is public.** Everything in it is
+world-readable on GitHub whether or not Mintlify publishes it. Keeping a file
+out of the navigation limits how it is presented and indexed; it does not make
+it private.
