@@ -12,15 +12,10 @@
     "dark": "#262626"
   },
   "fonts": {
-    "family": "Instrument Sans",
-    "heading": {
-      "family": "Hedvig Letters Serif",
-      "weight": 400
-    },
-    "body": {
-      "family": "Instrument Sans",
-      "weight": 400
-    }
+    "family": "Switzer",
+    "source": "https://cdn.fontshare.com/wf/BLNB4FAQFNK56DWWNF7PMGTCOTZHOEII/ST3WKSSDMBK2MIQQO3MAVYWLF4FTOLFV/6IN5WOLRCYP4G4MOCOHOMXNON6Q7MDAR.woff2",
+    "format": "woff2",
+    "weight": 400
   },
   "favicon": "/images/favicon.svg",
   "seo": {
